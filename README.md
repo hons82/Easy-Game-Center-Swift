@@ -555,7 +555,7 @@ class MainViewController: UIViewController,EGCDelegate {
 #####Player identified to Game Center
 * **Is player identified to gameCenter**
 ```swift
-    if EGC.isPlayerIdentifiedToGameCenter() { /* Player identified */ } 
+    if EGC.isPlayerIdentified { /* Player identified */ }
 ```
 
 #####Get Local Player
