@@ -193,12 +193,11 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
     - returns: Bool is identified
     
     */
-    static var isPlayerIdentified: Bool {
+    public static var isPlayerIdentified: Bool {
         get {
             return GKLocalPlayer.localPlayer().authenticated
         }
     }
-    //  class func isPlayerIdentified -> Bool { }
     /**
     Get local player (GKLocalPlayer)
     
