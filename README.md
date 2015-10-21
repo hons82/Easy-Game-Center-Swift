@@ -86,15 +86,15 @@ class MainViewController: UIViewController,EGCDelegate {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /// Init EGC and set delegate UIViewController 
+
+        /// Init EGC and set delegate UIViewController, showing Game Center login page if needed
         EGC.sharedInstance(self)
-        
-        /// If you want not message just delete this ligne
+        // OR
+        /// Will not show automatic Game Center login page
+        EGC.sharedInstance(self, showLoginPage: false)
+
+        /// If you want not message just delete this line
         EGC.debugMode = true
-        
-        /// Hidden automatique page login of Game Center, if player not login 
-        //EGC.showLoginPage = false
     }
 ``` 
 #### Authentification Delegate Function
