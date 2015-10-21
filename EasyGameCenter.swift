@@ -143,12 +143,14 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
     Start Singleton GameCenter Instance
     
     */
-    public class func sharedInstance(delegate:UIViewController)-> EGC {
+    public class func sharedInstance(delegate:UIViewController, showLoginPage: Bool = true)-> EGC {
         if Static.instance == nil {
             dispatch_once(&Static.onceToken) {
                 Static.instance = EGC()
                 Static.delegate = delegate
-                Static.instance!.loginPlayerToGameCenter()
+                if showLoginPage {
+                    Static.instance!.loginPlayerToGameCenter()
+                }
             }
         }
         return Static.instance!
