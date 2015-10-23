@@ -87,13 +87,6 @@ class MainViewController: UIViewController, EGCDelegate  {
 
     }
     /**
-    Player not connected to Game Center, Delegate Func of Easy Game Center
-    */
-    func EGCNotAuthentified() {
-        print("\n[MainViewController] Player not authentified\n")
-        self.PlayerAuthentified.text = "Player Authentified : False"
-    }
-    /**
     When GkAchievement & GKAchievementDescription in cache, Delegate Func of Easy Game Center
     */
     func EGCInCache() {
