@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-        <img src="https://img.shields.io/badge/Easy Game Center-2.0-D8B13C.svg" />
+        <img src="https://img.shields.io/badge/Easy Game Center-2.1-D8B13C.svg" />
 </p>
 **Easy Game Center** helps to manage Game Center in iOS. Report and track **high scores**, **achievements** and **Multiplayer**. Easy Game Center falicite management of Game Center.  
 
@@ -89,9 +89,9 @@ class MainViewController: UIViewController,EGCDelegate {
 
         /// Init EGC and set delegate UIViewController, showing Game Center login page if needed
         EGC.sharedInstance(self)
-        // OR
+        
         /// Will not show automatic Game Center login page
-        EGC.sharedInstance(self, showLoginPage: false)
+        /// EGC.showLoginPage = false
 
         /// If you want not message just delete this line
         EGC.debugMode = true
