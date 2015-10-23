@@ -110,6 +110,8 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
     /// Debug mode for see message
     private var debugModeGetSet:Bool = false
     
+    static var showLoginPage:Bool = true
+    
     /// The match object provided by GameKit.
     private var match: GKMatch?
     private var playersInMatch = Set<GKPlayer>()
@@ -143,14 +145,12 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
     Start Singleton GameCenter Instance
     
     */
-    public class func sharedInstance(delegate:UIViewController, showLoginPage: Bool = true)-> EGC {
+    public class func sharedInstance(delegate:UIViewController)-> EGC {
         if Static.instance == nil {
             dispatch_once(&Static.onceToken) {
                 Static.instance = EGC()
                 Static.delegate = delegate
-                if showLoginPage {
-                    Static.instance!.loginPlayerToGameCenter()
-                }
+                Static.instance!.loginPlayerToGameCenter()
             }
         }
         return Static.instance!
@@ -1171,10 +1171,12 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
             guard let gcVC = gameCenterVC else {
                 return
             }
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                delegateVC.presentViewController(gcVC, animated: true, completion: nil)
+            if EGC.showLoginPage {
+                dispatch_async(dispatch_get_main_queue()) {
+                    delegateVC.presentViewController(gcVC, animated: true, completion: nil)
+                }
             }
+
             
         }
     }
