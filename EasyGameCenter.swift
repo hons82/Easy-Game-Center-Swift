@@ -22,7 +22,7 @@ TODO List
 */
 
 // Protocol Easy Game Center
-@objc protocol EGCDelegate:NSObjectProtocol {
+@objc public protocol EGCDelegate:NSObjectProtocol {
     /**
     Authentified, Delegate Easy Game Center
     */
