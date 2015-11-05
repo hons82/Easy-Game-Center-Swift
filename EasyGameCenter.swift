@@ -22,7 +22,7 @@ TODO List
 */
 
 // Protocol Easy Game Center
-@objc protocol EGCDelegate:NSObjectProtocol {
+@objc public protocol EGCDelegate:NSObjectProtocol {
     /**
     Authentified, Delegate Easy Game Center
     */
@@ -269,8 +269,10 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
         
         let gc = GKGameCenterViewController()
         gc.gameCenterDelegate = Static.instance
+		#if !os(tvOS)
         gc.viewState = GKGameCenterViewControllerState.Achievements
-        
+		#endif
+		
         var delegeteParent:UIViewController? = EGC.delegate.parentViewController
         if delegeteParent == nil {
             delegeteParent = EGC.delegate
@@ -307,9 +309,11 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
         
         let gc = GKGameCenterViewController()
         gc.gameCenterDelegate = Static.instance
+		#if !os(tvOS)
         gc.leaderboardIdentifier = leaderboardIdentifier
         gc.viewState = GKGameCenterViewControllerState.Leaderboards
-        
+        #endif
+		
         var delegeteParent:UIViewController? = EGC.delegate.parentViewController
         if delegeteParent == nil {
             delegeteParent = EGC.delegate
@@ -341,8 +345,10 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
         
         let gc = GKGameCenterViewController()
         gc.gameCenterDelegate =  Static.instance
+		#if !os(tvOS)
         gc.viewState = GKGameCenterViewControllerState.Challenges
-        
+		#endif
+		
         var delegeteParent:UIViewController? =  EGC.delegate.parentViewController
         if delegeteParent == nil {
             delegeteParent =  EGC.delegate
