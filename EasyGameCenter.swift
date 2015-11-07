@@ -938,10 +938,16 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
             return
         }
         
-        let playerIDs = match.players.map { $0 .playerID } as! [String]
+
+        let playerIDs = match.players.map { $0.playerID }
+        
+        guard let hasePlayerIDS = playerIDs as? [String] else {
+            EGC.printLogEGC("No Player")
+            return
+        }
         
         /* Load an array of player */
-        GKPlayer.loadPlayersForIdentifiers(playerIDs) {
+        GKPlayer.loadPlayersForIdentifiers(hasePlayerIDS) {
             (players, error) in
             
             guard error == nil else {
