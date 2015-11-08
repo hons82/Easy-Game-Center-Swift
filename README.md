@@ -16,9 +16,9 @@
 </p>
 
 ####Example of Game iOS which use Easy Game Center
-######Hipster Moustache : http://bit.ly/1zGJMNG  By Stephan Yannick
-######Dyslexia : http://apple.co/1L3D6xS By Nicolas Morelli
-######Kicuby : https://goo.gl/BzNXBW By Kicody
+* **Hipster Moustache : http://bit.ly/1zGJMNG  By Stephan Yannick**
+* **Dyslexia : http://apple.co/1L3D6xS By Nicolas Morelli**
+* **Kicuby : https://goo.gl/BzNXBW By Kicody**
 
 ####Project Features
 * Swift and Objective-C
@@ -38,21 +38,19 @@
 
 ###Installation <a id="Installation"></a>
 --------
-###### CocoaPods
-
+#### CocoaPods
 ```ruby
 pod 'EasyGameCenter', :git => 'https://github.com/DaRkD0G/Easy-Game-Center-Swift.git'
 ```
-###### Install manual
-
-Setting up Easy Game Center it's really easy. Read the instructions after.
-
+#### Install manual
+Add the following classe (GameCenter.swift) to your Xcode project (make sure to select Copy Items in the dialog)
 Add the `GameKit`, `SystemConfiguration` frameworks to your Xcode project
+
 <p align="center">
-        <img src="http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png" height="100" width="500" />
+        <img src="http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png" height="100" width="500"/>
 </p>
 
-Add the following classes (GameCenter.swift) to your Xcode project (make sure to select Copy Items in the dialog)
+
 
 
 ###Example <a id="Example"></a>
