@@ -52,7 +52,7 @@ Add the **`GameKit`**, **`SystemConfiguration`** frameworks to your Xcode projec
 
 ##Documentation
 
-###Initialize
+###Initialize and Example
 --------
 **You can add protocol `EGCDelegate` for access to delegate functions**
 * Connexion `EGCAuthentified` `EGCInCache`
@@ -68,14 +68,14 @@ class MainViewController: UIViewController, EGCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /// Init EGC and set delegate UIViewController
+        // Init EGC and set delegate UIViewController
         EGC.sharedInstance(self)
         
-        /// Will not show automatic Game Center login page
-        /// EGC.showLoginPage = false
+        // Will not show automatic Game Center login page
+        // EGC.showLoginPage = false
 
-        /// If you want see message debug
-        /// EGC.debugMode = true
+        // If you want see message debug
+        // EGC.debugMode = true
     }
     /**
         Notifies the view controller that its view was added to a view hierarchy.
@@ -89,7 +89,6 @@ class MainViewController: UIViewController, EGCDelegate {
     }
     
     /// Mark: - Delegate function of EasyGameCenter 
-    
     /**
         Listener Player is authentified 
     */
@@ -100,11 +99,10 @@ class MainViewController: UIViewController, EGCDelegate {
         Listener when Achievements is in cache
     */
     func EGCInCache() {
-        /// Call when GkAchievement & GKAchievementDescription in cache
+        // Call when GkAchievement & GKAchievementDescription in cache
     }
     
     /// Mark: - Delegate function of EasyGameCenter for MultiPlayer
-    
     /**
         Listener When Match Started
     */
@@ -135,7 +133,7 @@ class MainViewController: UIViewController, EGCDelegate {
     }
 ``` 
 
-###Show Methods <a id="Show-Methods"></a>
+###Show Methods
 --------
 ####Show Achievements
 * **Show Game Center Achievements with completion**
