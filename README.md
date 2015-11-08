@@ -48,117 +48,51 @@ Add the following classe `EasyGameCenter.swift` to your Xcode project (make sure
 Add the `GameKit`, `SystemConfiguration` frameworks to your Xcode project. [See](http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png)
 
 
-
-
-
-###Example <a id="Example"></a>
+###Documentation <a id="Documentation"></a>
 --------
-#####You can add protocol "EGCDelegate" for access to functions ( connexion, multiplayer ), it's optional
+
+###Initialize <a id="Initialize"></a>
+--------
+**You can add protocol `EGCDelegate` for access to delegate functions**
+* Connexion `EGCAuthentified` `EGCInCache`
+* Multiplayer `EGCMatchStarted` `EGCMatchRecept` `EGCMatchEnded` `EGCMatchCancel`
+
+`EGCDelegate` it's optional, it's not mandatory
+ 
 ```swift 
-class MainViewController: UIViewController,EGCDelegate {
+class MainViewController: UIViewController, EGCDelegate {
     /**
         This method is called after the view controller has loaded
     */
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /// Init EGC and set delegate UIViewController, showing Game Center login page if needed
+        /// Init EGC and set delegate UIViewController
         EGC.sharedInstance(self)
         
         /// Will not show automatic Game Center login page
         /// EGC.showLoginPage = false
 
-        /// If you want not message just delete this line
-        EGC.debugMode = true
-    }
-``` 
-#### Authentification Delegate Function
-#####Add to your UIViewController EGCDelegate for access to this function ( it's optional )
-```swift 
-    /**
-        Player connected to Game Center, Delegate Func of Easy Game Center
-    */
-    func EGCAuthentified(authentified:Bool) {
-
-        if authentified {
-            /// The user is identified in the game center 
-        } else {
-            /// The user is NOT identified in the game center 
-        }
+        /// If you want see message debug
+        /// EGC.debugMode = true
     }
     /**
-        When GkAchievement & GKAchievementDescription in cache, Delegate Func of Easy Game Center
+        Notifies the view controller that its view was added to a view hierarchy.
     */
-    func EGCInCache() {
-        /// GkAchievement & GKAchievementDescription in cache
-    }
-```
-#### MultiPlayer Delegate Function
-#####Add to your UIViewController EGCDelegate for access to this function ( it's optional )
-```swift 
-    /**
-        Match Start, Delegate Func of Easy Game Center
-    */
-    func EGCMatchStarted() {
-        /// Match Started !
-    }
-    /**
-        Match Recept Data, Delegate Func of Easy Game Center
-    */
-    func EGCMatchRecept(match: GKMatch, didReceiveData data: NSData, fromPlayer playerID: String) {
-        /// Recept Data from Match !
-    }
-    /**
-    Match End / Error (No NetWork example), Delegate Func of Easy Game Center
-    */
-    func EGCMatchEnded() {
-        /// Match Ended !
-    }
-    /**
-    Match Cancel, Delegate Func of Easy Game Center
-    */
-    func EGCMatchCancel() {
-        /// Match cancel
-    }
-}
-```
-
-###Documentation <a id="Documentation"></a>
---------
-###Initialize <a id="Initialize"></a>
-#####Protocol Easy Game Center
-* **Description :** You should add **EGCDelegate** protocol if you want use delegate functions (**EGCAuthentified,EGCNotAuthentified,EGCInCache**)
-* **Option :** It is optional (if you do not use the functions, do not add)
-```swift
-    class ExampleViewController: UIViewController,EGCDelegate { }
-```
-
-#####Initialize Easy Game Center
-* **Description :** You should setup Easy Game Center when your app is launched. I advise you to **viewDidLoad()** method
-```swift
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Init Easy Game Center
-        EGC.sharedInstance(self)
-    }
-```
-
-#####Set new delegate when you change UIViewController
-* **Description :** If you have several UIViewController just add this in your UIViewController for set new Delegate
-* **Option :** It is optional 
-```swift
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        //Set New view controller delegate, that's when you change UIViewController
+        // Set new view controller delegate, that's when you change UIViewController
+        // If you have several UIViewController just add this in your UIViewControllers for set new Delegate
         EGC.delegate = self
     }
-```
+    
+    
+``` 
 
 ###Delegate function for listen <a id="Delegate-function-for-listen"></a>
 --------
-#####Listener Player is authentified
+####Listener Player is authentified
 * **Description :** This function is call when player is authentified to Game Center
 * **Option :** It is optional 
 ```swift
