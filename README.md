@@ -89,28 +89,21 @@ class MainViewController: UIViewController, EGCDelegate {
         EGC.delegate = self
     }
     
+    /// Mark: -Delegate func EasyGameCenter
     
-``` 
-
-###Delegate function for listen <a id="Delegate-function-for-listen"></a>
---------
-####Listener Player is authentified
-* **Description :** This function is call when player is authentified to Game Center
-* **Option :** It is optional 
-```swift
+    /**
+        Listener Player is authentified 
+    */
     func EGCAuthentified(authentified:Bool) {
         print("Player Authentified = \(authentified)")
     }
-```
-
-####Listener when Achievement is in cache
-* **Description :** This function is call when GKachievements GKachievementsDescription is in cache
-* **Option :** It is optional 
-```swift
+    /**
+        Listener when Achievements is in cache
+    */
     func EGCInCache() {
         /// Call when GkAchievement & GKAchievementDescription in cache
     }
-```
+``` 
 
 ###Show Methods <a id="Show-Methods"></a>
 --------
