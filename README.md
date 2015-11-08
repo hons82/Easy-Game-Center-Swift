@@ -50,10 +50,9 @@ Add the **`GameKit`**, **`SystemConfiguration`** frameworks to your Xcode projec
 [**See**](http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png)
 
 
-###Documentation
---------
+##Documentation
 
-####Initialize
+###Initialize
 --------
 **You can add protocol `EGCDelegate` for access to delegate functions**
 * Connexion `EGCAuthentified` `EGCInCache`
@@ -89,7 +88,7 @@ class MainViewController: UIViewController, EGCDelegate {
         EGC.delegate = self
     }
     
-    /// Mark: -Delegate func EasyGameCenter
+    /// Mark: - Delegate function of EasyGameCenter 
     
     /**
         Listener Player is authentified 
@@ -102,6 +101,37 @@ class MainViewController: UIViewController, EGCDelegate {
     */
     func EGCInCache() {
         /// Call when GkAchievement & GKAchievementDescription in cache
+    }
+    
+    /// Mark: - Delegate function of EasyGameCenter for MultiPlayer
+    
+    /**
+        Listener When Match Started
+    */
+    func EGCMatchStarted() {
+        print("MatchStarted")
+    }
+    /**
+        Listener When Match Recept Data ( When player send data to all player )
+    */
+    func EGCMatchRecept(match: GKMatch, didReceiveData data: NSData, fromPlayer playerID: String) {
+        // See Packet Example in project
+        let strucData =  Packet.unarchive(data)
+        print("Recept From player = \(playerID)")
+        print("Recept Packet.name = \(strucData.name)")
+        print("Recept Packet.index = \(strucData.index)")
+    }
+    /**
+        Listener When Match End
+    */
+    func EGCMatchEnded() {
+        print("MatchEnded")
+    }
+    /**
+        Listener When Match End
+    */
+    func EGCMatchCancel() {
+        print("Match cancel")
     }
 ``` 
 
@@ -365,53 +395,6 @@ class MainViewController: UIViewController, EGCDelegate {
         <img src="http://g.recordit.co/ApqB4QkOEv.gif" height="500" width="280" />
 </p>
 
-####Protocol Easy Game Center
-* **Description :** You should add **EGCDelegate** protocol if you want use delegate functions (**EGCMatchStarted,EGCMatchRecept,EGCMatchEnded,EGCMatchCancel**)
-* **Option :** It is optional (if you do not use the functions, do not add)
-```swift
-    class ExampleViewController: UIViewController,EGCDelegate { }
-```
-###Delegate function for listen MultiPlayer <a id="Delegate-function-for-listen-MultiPlayer"></a>
---------
-####Listener When Match Started 
-* **Description :** This function is call when the match Started
-* **Option :** It is optional 
-```swift
-    func EGCMatchStarted() {
-        print("\n[MultiPlayerActions] MatchStarted")
-    }
-```
-
-####Listener When Match Recept Data
-* **Description :** This function is call when player send data to all player
-* **Option :** It is optional 
-```swift
-    func EGCMatchRecept(match: GKMatch, didReceiveData data: NSData, fromPlayer playerID: String) {
-        // See Packet 
-        let autre =  Packet.unarchive(data)
-        print("\n[MultiPlayerActions] Recept From player = \(playerID)")
-        print("\n[MultiPlayerActions] Recept Packet.name = \(autre.name)")
-        print("\n[MultiPlayerActions] Recept Packet.index = \(autre.index)")
-    }
-```
-
-####Listener When Match End
-* **Description :** This function is call when the match is Ended
-* **Option :** It is optional 
-```swift
-    func EGCMatchEnded() {
-        print("\n[MultiPlayerActions] MatchEnded")
-    }
-```
-
-####Listener When Match Cancel
-* **Description :** This function is call when the match is cancel by the local Player
-* **Option :** It is optional 
-```swift
-    func EGCMatchCancel() {
-        print("\n[MultiPlayerActions] Match cancel")
-    }
-```
 ###MultiPlayer Methods <a id="MultiPlayer-Methods"></a>
 --------
 ####Find player By number of player
