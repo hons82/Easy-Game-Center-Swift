@@ -91,12 +91,14 @@ class MainViewController: UIViewController, EGCDelegate {
     /// Mark: - Delegate function of EasyGameCenter 
     /**
         Listener Player is authentified 
+        Optional function
     */
     func EGCAuthentified(authentified:Bool) {
         print("Player Authentified = \(authentified)")
     }
     /**
         Listener when Achievements is in cache
+        Optional function
     */
     func EGCInCache() {
         // Call when GkAchievement & GKAchievementDescription in cache
@@ -105,12 +107,15 @@ class MainViewController: UIViewController, EGCDelegate {
     /// Mark: - Delegate function of EasyGameCenter for MultiPlayer
     /**
         Listener When Match Started
+        Optional function
     */
     func EGCMatchStarted() {
         print("MatchStarted")
     }
     /**
-        Listener When Match Recept Data ( When player send data to all player )
+        Listener When Match Recept Data
+        When player send data to all player
+        Optional function
     */
     func EGCMatchRecept(match: GKMatch, didReceiveData data: NSData, fromPlayer playerID: String) {
         // See Packet Example in project
@@ -121,17 +126,21 @@ class MainViewController: UIViewController, EGCDelegate {
     }
     /**
         Listener When Match End
+        Optional function
     */
     func EGCMatchEnded() {
         print("MatchEnded")
     }
     /**
-        Listener When Match End
+        Listener When Match Cancel
+        Optional function
     */
     func EGCMatchCancel() {
         print("Match cancel")
     }
 ``` 
+
+
 
 ###Show Methods
 --------
