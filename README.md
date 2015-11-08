@@ -15,48 +15,27 @@
         <img src="http://g.recordit.co/aEYan5qPW3.gif" height="500" width="280" />
 </p>
 
-####Example Game with Easy Game Center
+####Example of Game iOS which use Easy Game Center
 ######Hipster Moustache : http://bit.ly/1zGJMNG  By Stephan Yannick
 ######Dyslexia : http://apple.co/1L3D6xS By Nicolas Morelli
 ######Kicuby : https://goo.gl/BzNXBW By Kicody
 
 ####Project Features
-Easy Game Center is a great way to use Game Center in your iOS app.
-
-* Swift
-* Manage **multiplayers**
-* Manage **leaderboards**
-* Manage **achievements**
+* Swift and Objective-C
+* Manage **Multiplayers**
+* Manage **Leaderboards**
+* Manage **Achievements**
 * Manages in **single line of code** most function of Game Center
-* GKachievements & GKachievementsDescription are save in cache and automatically refreshed
+* Achievements are save in cache and automatically refreshed
 * Delegate function when player is connected, not connected, multiplayer etc...
-* Most of the functions callBack (Handler, completion)
-* Useful methods and properties by use Singleton (EGC.exampleFunction)
-* Easy Game Center is asynchronous
-* **Frequent updates** to the project based on user issues and requests.
-* **Example project**
-* Easily contribute to the project :)
+* Most of the functions have completion
+* Simply use the methods with EGC.method or EasyGameCenter.method
 
 ####Contributions & Support
-* Any contribution is more than welcome! You can contribute through pull requests and issues on GitHub. :D
-* Send me your application's link, if you use Easy Game center, I will add on the cover page and for support 
-[@YannickSteph](https://twitter.com/YannickSteph)
-* Contact for support [Issues](https://github.com/DaRkD0G/Easy-Game-Center-Swift/issues) 
+* Any contribution is more than welcome ! You can contribute through pull requests and issues on GitHub. :D
+* Send me your application's link, if you use Easy Game center, I will add on the cover page 
+* Contact for support [Issues](https://github.com/DaRkD0G/Easy-Game-Center-Swift/issues) or [@YannickSteph](https://twitter.com/YannickSteph)
 
-###Table of Contents
-* [Installation](#Installation)
-* [Example](#Example)
-* [Documentation](#Documentation)
-	* [Initialize](#Initialize)
-	* [Delegate function EGC](#Delegate-function-for-listen)
-	* [Show](#Show-Methods)
-	* [Achievements](#Achievements-Methods)
-	* [Leaderboards](#Leaderboards)
-	* [MultiPlayer delegate function](#Delegate-function-for-listen-MultiPlayer)
-	* [MultiPlayer](#MultiPlayer-Methods) 
-	* [Other Methods](#other-methods)
-	
-		
 ###Installation <a id="Installation"></a>
 --------
 ###### CocoaPods
@@ -203,7 +182,7 @@ class MainViewController: UIViewController,EGCDelegate {
 
 ###Show Methods <a id="Show-Methods"></a>
 --------
-#####Show Achievements
+####Show Achievements
 * **Show Game Center Achievements with completion**
 * **Option :** Without completion 
 ```swift 
