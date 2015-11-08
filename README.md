@@ -43,9 +43,9 @@
 pod 'EasyGameCenter', :git => 'https://github.com/DaRkD0G/Easy-Game-Center-Swift.git'
 ```
 #### Install manual
-Add the following classe `EasyGameCenter.swift` to your Xcode project (make sure to select Copy Items in the dialog)
+Add the following classe **`EasyGameCenter.swift`** to your Xcode project (make sure to select Copy Items in the dialog)
 
-Add the `GameKit`, `SystemConfiguration` frameworks to your Xcode project. [See](http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png)
+Add the **`GameKit`**, **`SystemConfiguration`** frameworks to your Xcode project. [See](http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png)
 
 
 ###Documentation <a id="Documentation"></a>
