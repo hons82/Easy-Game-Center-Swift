@@ -88,7 +88,9 @@ class MainViewController: UIViewController, EGCDelegate {
         EGC.delegate = self
     }
     
-    /// Mark: - Delegate function of EasyGameCenter 
+    /// ############################################################ ///
+    ///        Mark: - Delegate function of EasyGameCenter           ///
+    /// ############################################################ ///
     /**
         Listener Player is authentified 
         Optional function
@@ -104,7 +106,9 @@ class MainViewController: UIViewController, EGCDelegate {
         // Call when GkAchievement & GKAchievementDescription in cache
     }
     
-    /// Mark: - Delegate function of EasyGameCenter for MultiPlayer
+    /// ############################################################ ///
+    ///  Mark: - Delegate function of EasyGameCenter for MultiPlaye  ///
+    /// ############################################################ ///
     /**
         Listener When Match Started
         Optional function
