@@ -9,44 +9,44 @@
 <p align="center">
         <img src="https://img.shields.io/badge/Easy Game Center-2.2-D8B13C.svg" />
 </p>
-**Easy Game Center** helps to manage Game Center in iOS. Report and track **high scores**, **achievements** and **Multiplayer**. Easy Game Center falicite management of Game Center.  
+**Easy Game Center** helps you manage Game Center on iOS. Report and track **high scores**, **achievements** and **Multiplayer**. Easy Game Center facilitate Game Center management.  
 
 <p align="center">
         <img src="http://g.recordit.co/aEYan5qPW3.gif" height="500" width="280" />
 </p>
 
-####Example of Game iOS which use Easy Game Center
+##iOS Games using Easy Game Center
 * **Hipster Moustache : http://bit.ly/1zGJMNG  By Stephan Yannick**
 * **Dyslexia : http://apple.co/1L3D6xS By Nicolas Morelli**
 * **Kicuby : https://goo.gl/BzNXBW By Kicody**
 
-####Project Features
+##Project Features
 * Swift and Objective-C
 * Manage **Multiplayers**
 * Manage **Leaderboards**
 * Manage **Achievements**
-* Manages in **single line of code** most function of Game Center
-* Achievements are save in cache and automatically refreshed
+* Manage in **single line of code** most functions of Game Center
+* Achievements are saved in cache and automatically refreshed
 * Delegate function when player is connected, not connected, multiplayer etc...
 * Most of the functions have completion
 * Simply use the methods with EGC.method or EasyGameCenter.method
 
-####Contributions & Support
+##Contributions & Support
 * Any contribution is more than welcome ! You can contribute through pull requests and issues on GitHub. :D
 * Send me your application's link, if you use Easy Game center, I will add on the cover page 
 * Contact for support [Issues](https://github.com/DaRkD0G/Easy-Game-Center-Swift/issues) or [@YannickSteph](https://twitter.com/YannickSteph)
 
 
-###Installation <a id="Installation"></a>
+##Installation <a id="Installation"></a>
 --------
-####CocoaPods
+###CocoaPods
 ```ruby
 pod 'EasyGameCenter', :git => 'https://github.com/DaRkD0G/Easy-Game-Center-Swift.git'
 ```
-####Manual
+###Manual
 Add the following classe **`EasyGameCenter.swift`** to your Xcode project (make sure to select Copy Items in the dialog)
 
-Add the **`GameKit`**, **`SystemConfiguration`** frameworks to your Xcode project.    
+Add **`GameKit`** and **`SystemConfiguration`** frameworks to your Xcode project.    
 [**See**](http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png)
 
 
