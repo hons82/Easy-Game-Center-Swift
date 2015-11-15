@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-        <img src="https://img.shields.io/badge/Easy Game Center-2.2-D8B13C.svg" />
+        <img src="https://img.shields.io/badge/Easy Game Center-2.3-D8B13C.svg" />
 </p>
 **Easy Game Center** helps you manage Game Center on iOS. Report and track **high scores**, **achievements** and **Multiplayer**. Easy Game Center facilitate Game Center management.  
 
