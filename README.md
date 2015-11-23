@@ -46,8 +46,10 @@ pod 'EasyGameCenter', :git => 'https://github.com/DaRkD0G/Easy-Game-Center-Swift
 ###Manual
 Add the following classe **`EasyGameCenter.swift`** to your Xcode project (make sure to select Copy Items in the dialog)
 
-Add **`GameKit`** and **`SystemConfiguration`** frameworks to your Xcode project.    
-[**See**](http://s27.postimg.org/45wds3jub/Capture_d_cran_2558_03_20_19_56_34.png)
+Add **`GameKit`** and **`SystemConfiguration`** frameworks to your Xcode project.
+<p align="center">
+        <img src="http://s20.postimg.org/45gl1bn59/EGC_Manual_settings.png"  width="340" height="145" />
+</p>
 
 
 ##Documentation
@@ -149,13 +151,13 @@ class MainViewController: UIViewController, EGCDelegate {
 ###Show Methods
 --------
 ####Show Achievements
-* **Show Game Center Achievements with completion**
-* **Option :** Without completion 
-```swift 
-    EGC.showGameCenterAchievements()
-```
-* **Option :** With completion
+Show Game Center Achievements with optional completion
+
 ```swift
+    // Without completion
+    EGC.showGameCenterAchievements()
+    
+    // With completion
     EGC.showGameCenterAchievements { 
         (isShow) -> Void in
         if isShow {
@@ -165,13 +167,13 @@ class MainViewController: UIViewController, EGCDelegate {
 ```
 
 ####Show Leaderboard
-* **Show Game Center Leaderboard  with completion**
-* **Option :** Without completion 
+Show Game Center Leaderboard with optional completion
+
 ```swift
+    // Without completion
     EGC.showGameCenterLeaderboard(leaderboardIdentifier: "IdentifierLeaderboard")
-```
-* **Option :** With completion
-```swift
+    
+    // With completion
     EGC.showGameCenterLeaderboard(leaderboardIdentifier: "IdentifierLeaderboard") { 
         (isShow) -> Void in
         if isShow {
@@ -181,13 +183,13 @@ class MainViewController: UIViewController, EGCDelegate {
 ```
 
 ####Show Challenges
-* **Show Game Center Challenges  with completion**
-* **Option :** Without completion 
-```swift 
-    EGC.showGameCenterChallenges()
-```
-* **Option :** With completion 
+Show Game Center Challenges with optional completion
+
 ```swift
+    // Without completion
+    EGC.showGameCenterChallenges()
+    
+    // With completion
     EGC.showGameCenterChallenges {
         (isShow) -> Void in
         if isShow {
@@ -197,13 +199,13 @@ class MainViewController: UIViewController, EGCDelegate {
 ```
 
 ####Show authentification page Game Center
-* **Show Game Center authentification page with completion**
-* **Option :** Without completion 
+Show Game Center authentification page with optional completion
+
 ```swift
+    // Without completion
     EGC.showGameCenterAuthentication()
-```
-* **Option :** With completion 
-```swift
+    
+    // With completion
     EGC.showGameCenterAuthentication { 
         (result) -> Void in
         if result {
@@ -213,13 +215,13 @@ class MainViewController: UIViewController, EGCDelegate {
 ```
 
 ####Show custom banner
-* **Show custom banner Game Center with completion**
-* **Option :** Without completion 
+Show custom banner Game Center with optional completion
+
 ```swift
+    // Without completion
     EGC.showCustomBanner(title: "Title", description: "My Description...")
-```
-* **Option :** With completion 
-```swift
+    
+    // With completion
     EGC.showCustomBanner(title: "Title", description: "My Description...") { 
         print("Custom Banner is finish to Show")
     }
