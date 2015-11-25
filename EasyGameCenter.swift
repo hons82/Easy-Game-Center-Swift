@@ -171,7 +171,7 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
             guard newValue != EGC.delegate else {
                 return
             }
-            Static.delegate = newValue
+            Static.delegate = EGC.delegate
             
             EGC.printLogEGC("New delegate UIViewController is \(_stdlib_getDemangledTypeName(newValue))\n")
         }
