@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name					= 'EasyGameCenter'
-	s.version				= '2.3.0'
+	s.version				= '2.3.1'
 	s.summary				= 'Easy Game Center helps to manage Game Center in iOS'
 	s.homepage				= 'https://github.com/DaRkD0G/Easy-Game-Center-Swift'
 	s.license				= { :type => 'MIT', :file => 'LICENSE' }
