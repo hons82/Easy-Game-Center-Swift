@@ -247,7 +247,45 @@ public class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewCont
     /*####################################################################################################*/
     /*                                      Public Func Show                                              */
     /*####################################################################################################*/
+    /**
+    Show Game Center 
     
+    - parameter completion: Viod just if open Game Center Achievements
+    */
+    public class func showGameCenter(completion: ((isShow:Bool) -> Void)? = nil) {
+        
+        guard EGC.isConnectedToNetwork else {
+            if completion != nil { completion!(isShow:false) }
+            EGCError.NoConnection.errorCall()
+            return
+        }
+        
+        guard EGC.isPlayerIdentified else {
+            if completion != nil { completion!(isShow:false) }
+            EGCError.NotLogin.errorCall()
+            return
+        }
+        
+        
+        EGC.printLogEGC("Show Game Center")
+        
+        let gc                = GKGameCenterViewController()
+        gc.gameCenterDelegate = Static.instance
+        
+        #if !os(tvOS)
+            gc.viewState          = GKGameCenterViewControllerState.Default
+        #endif
+        
+        var delegeteParent:UIViewController? = EGC.delegate.parentViewController
+        if delegeteParent == nil {
+            delegeteParent = EGC.delegate
+        }
+        delegeteParent!.presentViewController(gc, animated: true, completion: {
+            if completion != nil { completion!(isShow:true) }
+        })
+        
+    }
+
     /**
     Show Game Center Player Achievements
     
