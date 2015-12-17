@@ -19,6 +19,7 @@
 * **Hipster Moustache : http://bit.ly/1zGJMNG  By Stephan Yannick**
 * **Dyslexia : http://apple.co/1L3D6xS By Nicolas Morelli**
 * **Kicuby : https://goo.gl/BzNXBW By Kicody**
+* **Nixie : http://bit.ly/nixieGame By Domsware**
 
 ##Project Features
 * Swift and Objective-C
