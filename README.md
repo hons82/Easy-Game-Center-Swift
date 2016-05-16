@@ -20,6 +20,7 @@
 * **Dyslexia : http://apple.co/1L3D6xS By Nicolas Morelli**
 * **Kicuby : https://goo.gl/BzNXBW By Kicody**
 * **Nixie : http://bit.ly/nixieGame By Domsware**
+* **DodgerBall : http://apple.co/1Ruz7Qj By Ray Hughes**
 
 ##Project Features
 * Swift and Objective-C
