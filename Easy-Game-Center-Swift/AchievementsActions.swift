@@ -18,7 +18,7 @@ class AchievementsActions: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let buttonBarOpenGameCenter :UIBarButtonItem =  UIBarButtonItem(title: "Game Center Achievement", style: .Bordered, target: self, action: "openGameCenterAchievement:")
+        let buttonBarOpenGameCenter :UIBarButtonItem =  UIBarButtonItem(title: "Game Center Achievement", style: .Bordered, target: self, action: #selector(AchievementsActions.openGameCenterAchievement(_:)))
         self.navigationItem.rightBarButtonItem = buttonBarOpenGameCenter
         
         

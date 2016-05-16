@@ -17,7 +17,7 @@ class LeaderboardsActions: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let buttonBarOpenGameCenter :UIBarButtonItem =  UIBarButtonItem(title: "Game Center Leaderboards", style: .Bordered, target: self, action: "openGameCenterLeaderboard:")
+        let buttonBarOpenGameCenter :UIBarButtonItem =  UIBarButtonItem(title: "Game Center Leaderboards", style: .Bordered, target: self, action: #selector(LeaderboardsActions.openGameCenterLeaderboard(_:)))
         self.navigationItem.rightBarButtonItem = buttonBarOpenGameCenter
         
     }
