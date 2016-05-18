@@ -145,7 +145,6 @@
 				8807C7181ABB8B5900D86D3B /* Sources */,
 				8807C7191ABB8B5900D86D3B /* Frameworks */,
 				8807C71A1ABB8B5900D86D3B /* Resources */,
-				885C32961BF8BB1300BADF2A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -202,22 +201,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		885C32961BF8BB1300BADF2A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/local/bin/carthage copy-frameworks";
-			shellScript = "$(SRCROOT)/Carthage/Build/iOS/GameKit.framework\n$(SRCROOT)/Carthage/Build/iOS/SystemConfiguration.framework";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8807C7181ABB8B5900D86D3B /* Sources */ = {
