@@ -42,7 +42,7 @@ class MainViewController: UIViewController, EGCDelegate  {
     /*####################################################################################################*/
     /*    Set New view controller delegate, is when you change you change UIViewControlle                 */
     /*####################################################################################################*/
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         /**
         Set New view controller delegate, when you change UIViewController

@@ -17,7 +17,7 @@ class LeaderboardsActions: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let buttonBarOpenGameCenter :UIBarButtonItem =  UIBarButtonItem(title: "Game Center Leaderboards", style: .Bordered, target: self, action: #selector(LeaderboardsActions.openGameCenterLeaderboard(_:)))
+        let buttonBarOpenGameCenter :UIBarButtonItem =  UIBarButtonItem(title: "Game Center Leaderboards", style: .plain, target: self, action: #selector(LeaderboardsActions.openGameCenterLeaderboard(sender:)))
         self.navigationItem.rightBarButtonItem = buttonBarOpenGameCenter
         
     }
@@ -25,7 +25,7 @@ class LeaderboardsActions: UIViewController {
     /*####################################################################################################*/
     /*    Set New view controller delegate, is when you change you change UIViewControlle                 */
     /*####################################################################################################*/
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         /* Set New view controller delegate */
@@ -60,9 +60,9 @@ class LeaderboardsActions: UIViewController {
                 for oneGKLeaderboard in resultArrayGKLeaderboardIsOK  {
                     
                     print("\n[LeaderboardsActions] Get Leaderboards (getGKLeaderboard)\n")
-                    print("ID : \(oneGKLeaderboard.identifier)\n")
-                    print("Title :\(oneGKLeaderboard.title)\n")
-                    print("Loading ? : \(oneGKLeaderboard.loading)\n")
+                    print("ID : \(String(describing: oneGKLeaderboard.identifier))\n")
+                    print("Title :\(String(describing: oneGKLeaderboard.title))\n")
+                    print("Loading ? : \(oneGKLeaderboard.isLoading)\n")
                     
                 }
             }

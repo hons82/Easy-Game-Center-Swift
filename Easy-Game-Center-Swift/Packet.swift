@@ -30,15 +30,15 @@ struct Packet {
     */
     func archive() -> NSData {
         
-        var archivedPacket = ArchivedPacket(index: Int64(self.index), numberOfPackets: Int64(self.numberOfPackets), nameLength: Int64(self.name.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)))
+        var archivedPacket = ArchivedPacket(index: Int64(self.index), numberOfPackets: Int64(self.numberOfPackets), nameLength: Int64(self.name.lengthOfBytes(using: String.Encoding.utf8)))
         
         let metadata = NSData(
             bytes: &archivedPacket,
-            length: sizeof(ArchivedPacket)
+            length: MemoryLayout<ArchivedPacket>.size
         )
         
-        let archivedData = NSMutableData(data: metadata)
-        archivedData.appendData(name.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
+        let archivedData = NSMutableData(data: metadata as Data)
+        archivedData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!)
         
         return archivedData
     }
@@ -51,14 +51,14 @@ struct Packet {
     */
     static func unarchive(data: NSData!) -> Packet {
         var archivedPacket = ArchivedPacket(index: 0, numberOfPackets: 0, nameLength: 0) //, dataLength: 0
-        let archivedStructLength = sizeof(ArchivedPacket)
+        let archivedStructLength = MemoryLayout<ArchivedPacket>.size
         
-        let archivedData = data.subdataWithRange(NSMakeRange(0, archivedStructLength))
-        archivedData.getBytes(&archivedPacket)
+        let archivedData = data.subdata(with: NSMakeRange(0, archivedStructLength)) as NSData
+        archivedData.getBytes(&archivedPacket, length: data.length)
         
         let nameRange = NSMakeRange(archivedStructLength, Int(archivedPacket.nameLength))
-        let nameData = data.subdataWithRange(nameRange)
-        let name = NSString(data: nameData, encoding: NSUTF8StringEncoding) as! String
+        let nameData = data.subdata(with: nameRange)
+        let name = NSString(data: nameData, encoding: String.Encoding.utf8.rawValue)! as String
         let packet = Packet(name: name, index: archivedPacket.index, numberOfPackets: archivedPacket.numberOfPackets)
         
         return packet

@@ -24,7 +24,7 @@ class MultiPlayerActions: UIViewController,EGCDelegate {
     /*####################################################################################################*/
     /*    Set New view controller delegate, is when you change you change UIViewControlle                 */
     /*####################################################################################################*/
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         /* Set New view controller delegate */
@@ -41,7 +41,7 @@ class MultiPlayerActions: UIViewController,EGCDelegate {
     @IBAction func ActionSendData(sender: AnyObject) {
         
         let myStruct = Packet(name: "My Data to Send !", index: 1234567890, numberOfPackets: 1)
-        EGC.sendDataToAllPlayers(myStruct.archive(), modeSend: .Reliable)
+        EGC.sendDataToAllPlayers(myStruct.archive() as Data, modeSend: .reliable)
         
     }
     @IBAction func ActionGetPlayerInMatch(sender: AnyObject) {
@@ -77,10 +77,10 @@ class MultiPlayerActions: UIViewController,EGCDelegate {
     /**
     Match Recept Data (When you send Data this function is call in the same time), Delegate Func of Easy Game Center
     */
-    func EGCMatchRecept(match: GKMatch, didReceiveData data: NSData, fromPlayer playerID: String) {
+    func EGCMatchRecept(_ match: GKMatch, didReceiveData data: Data, fromPlayer playerID: String) {
         
         // See Packet
-        let autre =  Packet.unarchive(data)
+        let autre =  Packet.unarchive(data: data as NSData)
         print("\n[MultiPlayerActions] Recept From player = \(playerID)")
         print("\n[MultiPlayerActions] Recept Packet.name = \(autre.name)")
         print("\n[MultiPlayerActions] Recept Packet.index = \(autre.index)")

@@ -129,7 +129,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
     /*####################################################################################################*/
     override init() {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(EGC.authenticationChanged), name: NSNotification.Name(rawValue: GKPlayerAuthenticationDidChangeNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EGC.authenticationChanged), name: NSNotification.Name.GKPlayerAuthenticationDidChangeNotificationName, object: nil)
     }
     /**
      Static EGC
@@ -147,6 +147,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
      Start Singleton GameCenter Instance
      
      */
+    @discardableResult
     open class func sharedInstance(_ delegate:UIViewController)-> EGC {
         if Static.instance == nil {
             Static.instance = EGC()
@@ -195,9 +196,9 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
      - returns: Bool is identified
      
      */
-    open static var isPlayerIdentified: Bool {
+    public static var isPlayerIdentified: Bool {
         get {
-            return GKLocalPlayer.localPlayer().isAuthenticated
+            return GKLocalPlayer.local.isAuthenticated
         }
     }
     /**
@@ -208,7 +209,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
      */
     static var localPayer: GKLocalPlayer {
         get {
-            return GKLocalPlayer.localPlayer()
+            return GKLocalPlayer.local
         }
     }
     //   class func getLocalPlayer() -> GKLocalPlayer {  }
@@ -232,14 +233,14 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
             return
         }
         
-        EGC.localPayer.loadPhoto(forSize: GKPhotoSizeNormal, withCompletionHandler: {
+        EGC.localPayer.loadPhoto(for: GKPlayer.PhotoSize.normal, withCompletionHandler: {
             (image, error) in
             
             var playerInformationTuple:(playerID:String,alias:String,profilPhoto:UIImage?)
             playerInformationTuple.profilPhoto = nil
             
-            playerInformationTuple.playerID = EGC.localPayer.playerID!
-            playerInformationTuple.alias = EGC.localPayer.alias!
+            playerInformationTuple.playerID = EGC.localPayer.playerID
+            playerInformationTuple.alias = EGC.localPayer.alias
             if error == nil { playerInformationTuple.profilPhoto = image }
             completionTuple(playerInformationTuple)
         })
@@ -514,7 +515,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
             }
             
             let rankVal = valGkscore.rank
-            let nameVal  = EGC.localPayer.alias!
+            let nameVal  = EGC.localPayer.alias
             let scoreVal  = Int(valGkscore.value)
             completion((playerName: nameVal, score: scoreVal, rank: rankVal))
             
@@ -672,7 +673,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
                         let title = tupleIsOK.gkAchievementDescription.title
                         let description = tupleIsOK.gkAchievementDescription.achievedDescription
                         
-                        EGC.showCustomBanner(title: title!, description: description!)
+                        EGC.showCustomBanner(title: title, description: description)
                     }
                 })
             }
@@ -782,7 +783,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
         
         for achievement in achievementNotShow  {
             
-            EGC.getTupleGKAchievementAndDescription(achievementIdentifier: achievement.identifier!, completion: {
+            EGC.getTupleGKAchievementAndDescription(achievementIdentifier: achievement.identifier, completion: {
                 (tupleGKAchievementAndDescription) in
                 
                 guard let tupleOK = tupleGKAchievementAndDescription   else {
@@ -795,7 +796,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
                 let title = tupleOK.gkAchievementDescription.title
                 let description = tupleOK.gkAchievementDescription.achievedDescription
                 
-                EGC.showCustomBanner(title: title!, description: description!, completion: {
+                EGC.showCustomBanner(title: title, description: description, completion: {
                     
                     if completion != nil { completion!(achievement) }
                 })
@@ -977,13 +978,13 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
         
         let playerIDs = match.players.map { $0.playerID }
         
-        guard let hasePlayerIDS = playerIDs as? [String] else {
+        guard playerIDs.count > 0 else {
             EGC.printLogEGC("No Player")
             return
         }
         
         /* Load an array of player */
-        GKPlayer.loadPlayers(forIdentifiers: hasePlayerIDS) {
+        GKPlayer.loadPlayers(forIdentifiers: playerIDs) {
             (players, error) in
             
             guard error == nil else {
@@ -1019,7 +1020,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
      :GKMatchSendDataMode Reliable: a.s.a.p. but requires fragmentation and reassembly for large messages, may stall if network congestion occurs
      :GKMatchSendDataMode Unreliable: Preferred method. Best effort and immediate, but no guarantees of delivery or order; will not stall.
      */
-    open class func sendDataToAllPlayers(_ data: Data!, modeSend:GKMatchSendDataMode) {
+    open class func sendDataToAllPlayers(_ data: Data!, modeSend:GKMatch.SendDataMode) {
         guard EGC.isPlayerIdentified else {
             EGCError.notLogin.errorCall()
             return
@@ -1106,8 +1107,8 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
                 return
             }
             
-            for anAchievement in arrayGKAchievement where  anAchievement.identifier != nil {
-                EGC.sharedInstance.achievementsCache[anAchievement.identifier!] = anAchievement
+            for anAchievement in arrayGKAchievement {
+                EGC.sharedInstance.achievementsCache[anAchievement.identifier] = anAchievement
             }
             finish()
             
@@ -1119,15 +1120,15 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
                 return
             }
             
-            for anAchievementDes in arrayGKAchievementDes where  anAchievementDes.identifier != nil {
+            for anAchievementDes in arrayGKAchievementDes {
                 
                 // Add GKAchievement
-                if EGC.sharedInstance.achievementsCache.index(forKey: anAchievementDes.identifier!) == nil {
-                    EGC.sharedInstance.achievementsCache[anAchievementDes.identifier!] = GKAchievement(identifier: anAchievementDes.identifier!)
+                if EGC.sharedInstance.achievementsCache.index(forKey: anAchievementDes.identifier) == nil {
+                    EGC.sharedInstance.achievementsCache[anAchievementDes.identifier] = GKAchievement(identifier: anAchievementDes.identifier)
                     
                 }
                 // Add CGAchievementDescription
-                EGC.sharedInstance.achievementsDescriptionCache[anAchievementDes.identifier!] = anAchievementDes
+                EGC.sharedInstance.achievementsDescriptionCache[anAchievementDes.identifier] = anAchievementDes
             }
             
             GKAchievement.loadAchievements(completionHandler: {
@@ -1181,7 +1182,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
     
     // MARK: Internal functions
     
-    internal func authenticationChanged() {
+    @objc internal func authenticationChanged() {
         guard let delegateEGC = Static.delegate as? EGCDelegate else {
             return
         }
@@ -1209,7 +1210,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
             return
         }
         
-        GKLocalPlayer.localPlayer().authenticateHandler = {
+        GKLocalPlayer.local.authenticateHandler = {
             (gameCenterVC, error) in
             
             guard error == nil else {
@@ -1235,7 +1236,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
     /**
      Function checkup when he have net work login Game Center
      */
-    func checkupNetAndPlayer() {
+    @objc func checkupNetAndPlayer() {
         DispatchQueue.main.async {
             if self.timerNetAndPlayer == nil {
                 self.timerNetAndPlayer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(EGC.checkupNetAndPlayer), userInfo: nil, repeats: true)
@@ -1315,12 +1316,12 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
         
         switch state {
             /* Connected */
-        case .stateConnected where self.match != nil && theMatch.expectedPlayerCount == 0:
+        case .connected where self.match != nil && theMatch.expectedPlayerCount == 0:
             if #available(iOS 8.0, *) {
                 self.lookupPlayers()
             }
             /* Lost deconnection */
-        case .stateDisconnected:
+        case .disconnected:
             EGC.disconnectMatch()
         default:
             break
@@ -1339,7 +1340,7 @@ open class EGC: NSObject, GKGameCenterControllerDelegate, GKMatchmakerViewContro
         }
         
         guard error == nil else {
-            EGCError.error("Match failed with error: \(error?.localizedDescription)").errorCall()
+            EGCError.error("Match failed with error: \(String(describing: error?.localizedDescription))").errorCall()
             EGC.disconnectMatch()
             return
         }
@@ -1488,7 +1489,7 @@ extension EGC {
             switch self {
                 
             case .error(let error):
-                return (error != nil) ? "\(error!)" : "\(error)"
+                return (error != nil) ? "\(error!)" : "\(String(describing: error))"
                 
             case .cantCachingGKAchievementDescription:
                 return "Can't caching GKAchievementDescription\n( Have you create achievements in ItuneConnect ? )"

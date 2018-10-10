@@ -16,24 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /**
     Tells the delegate that the launch process
     */
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         return true
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
     }
     /**
     Simple Message
@@ -42,17 +41,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     :param: message          Message
     :param: uiViewController UIViewController
     */
-    class func simpleMessage(title title:String, message:String, uiViewController:UIViewController) {
+    class func simpleMessage(title:String, message:String, uiViewController:UIViewController) {
          if #available(iOS 8.0, *) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            uiViewController.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            uiViewController.present(alert, animated: true, completion: nil)
         } else {
             let alert: UIAlertView = UIAlertView()
             alert.delegate = self
             alert.title = title
             alert.message = message
-            alert.addButtonWithTitle("Ok")
+            alert.addButton(withTitle: "Ok")
             alert.show()
         }
     }
